@@ -33,6 +33,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9AC3B23F266062B3002AC34F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9AF581BD26605CFD000C40FC /* Assets.xcassets */,
+				9AF581C226605CFD000C40FC /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		9AF581AD26605CFD000C40FC = {
 			isa = PBXGroup;
 			children = (
@@ -54,8 +63,7 @@
 			children = (
 				9AF581B926605CFD000C40FC /* BigwalkApp.swift */,
 				9AF581BB26605CFD000C40FC /* ContentView.swift */,
-				9AF581BD26605CFD000C40FC /* Assets.xcassets */,
-				9AF581C226605CFD000C40FC /* Info.plist */,
+				9AC3B23F266062B3002AC34F /* Supporting Files */,
 				9AF581BF26605CFD000C40FC /* Preview Content */,
 			);
 			path = Bigwalk;
@@ -271,7 +279,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Bigwalk/Preview Content\"";
 				DEVELOPMENT_TEAM = JJPXPHW2TN;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Bigwalk/Info.plist;
+				INFOPLIST_FILE = "Bigwalk/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -293,7 +301,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Bigwalk/Preview Content\"";
 				DEVELOPMENT_TEAM = JJPXPHW2TN;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Bigwalk/Info.plist;
+				INFOPLIST_FILE = "Bigwalk/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
