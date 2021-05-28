@@ -1,19 +1,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var clickCheck = 0
+    @State var clickCheck = 1
     private let buttonWidth: CGFloat = 70
     private let buttonHeight: CGFloat = 10
     
     
     var body: some View {
         VStack(spacing: 10) {
-            HStack {
-                Picker(selection: .constant(1), label: Text("Picker")) {
-                    Text("공개형").tag(1)
-                    Text("기업형").tag(2)
-                }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
-            }
+            Picker(selection: $clickCheck, label: Text("Picker")) {
+                Text("공개형").tag(1)
+                Text("그룹형").tag(2)
+            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
+            
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
                     Spacer(minLength: 5)
