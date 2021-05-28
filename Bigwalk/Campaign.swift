@@ -49,11 +49,11 @@ struct Campaign: Decodable {
         }
     }
     
-    var organization: Bool {
+    var organization: Int {
         if organizationsInfo.isEmpty {
-            return true
+            return 1
         } else {
-            return false
+            return 2
         }
     }
 }

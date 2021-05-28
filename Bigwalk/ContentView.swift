@@ -130,14 +130,16 @@ struct ContentView: View {
                         }
                     }
                     ForEach(0..<campaignList.campaigns.count) { i in
-                        VStack {
-                            Text(campaignList.campaigns[i].title)
-                            Text(campaignList.campaigns[i].thumbnail)
-                            Text(campaignList.campaigns[i].promoterInfo.name)
-                            Text(String(campaignList.campaigns[i].ratio))
-                            Text(String(campaignList.campaigns[i].myInfo.story))
-                            Text(String(campaignList.campaigns[i].organization))
-                            Text(String(campaignList.campaigns[0].dueDate))
+                        if clickPicker == campaignList.campaigns[i].organization {
+                            VStack {
+                                Text(campaignList.campaigns[i].title)
+                                Text(campaignList.campaigns[i].thumbnail)
+                                Text(campaignList.campaigns[i].promoterInfo.name)
+                                Text(String(campaignList.campaigns[i].ratio))
+                                Text(String(campaignList.campaigns[i].myInfo.story))
+                                Text(String(campaignList.campaigns[i].organization))
+                                Text(String(campaignList.campaigns[0].dueDate))
+                            }
                         }
                     }
                 }
