@@ -6,7 +6,6 @@ struct ContentView: View {
     private let buttonWidth: CGFloat = 70
     private let buttonHeight: CGFloat = 10
     
-    
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 10) {
@@ -100,6 +99,35 @@ struct ContentView: View {
                     }
                 }
                 
+                List {
+                    HStack(spacing: 10) {
+                        Image("thumbnail").resizable().frame(width: 100, height: 100)
+                        VStack(alignment: .leading) {
+                            Text("세상에서 제일 쉬운 나눔").font(.system(size: 20, weight: .bold))
+                            Text("네패스 기업문화팀").foregroundColor(.gray)
+                                .font(.system(size: 15, weight: .bold))
+                            Button("공개형") {
+                            }.font(.system(size: 10, weight: .bold))
+                            .frame(width: 40, height: 15)
+                            .background(Color.green)
+                            .cornerRadius(10)
+                            .foregroundColor(.white)
+                            HStack {
+                                Text("90%").foregroundColor(.blue)
+                                    .font(.system(size: 15, weight: .bold))
+                                Spacer()
+                                Text("진행중").foregroundColor(.blue)
+                                    .font(.system(size: 15, weight: .bold))
+                            }
+                            ProgressView(value: 0.9)
+                        }
+                        Button(action: {print("기부")}){
+                            Image("contribution")
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                        }
+                    }
+                }
             }
         }
     }
