@@ -1,6 +1,6 @@
 import Foundation
 
-var campaignData: [Campaign] = JSONDecode.shared.loadJSON("CampaignMock.json")
+var campaignData: [Campaign] = JSONDecode.shared.loadJSON("CampaignMock.json")!
 
 struct Campaign: Decodable {
     let thumbnail: String
