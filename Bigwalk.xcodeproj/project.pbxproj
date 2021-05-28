@@ -70,8 +70,8 @@
 				9AF581B926605CFD000C40FC /* BigwalkApp.swift */,
 				9AF581BB26605CFD000C40FC /* ContentView.swift */,
 				9A16CD9B2661139E00C62760 /* Campaign.swift */,
-				9AE0B84F26612271000A8F2C /* CampaignMock.json */,
 				9AE0B84B26611EF6000A8F2C /* JSONDecode.swift */,
+				9AE0B84F26612271000A8F2C /* CampaignMock.json */,
 				9AC3B23F266062B3002AC34F /* Supporting Files */,
 				9AF581BF26605CFD000C40FC /* Preview Content */,
 			);

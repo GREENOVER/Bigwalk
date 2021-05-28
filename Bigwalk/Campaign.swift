@@ -1,6 +1,7 @@
 import Foundation
 
 var campaignData: [Campaign] = JSONDecode.shared.loadJSON("CampaignMock.json")!
+var sortData = campaignData.sorted{$0.ratio < $1.ratio}
 
 struct Campaign: Decodable {
     let thumbnail: String
