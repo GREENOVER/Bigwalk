@@ -6,6 +6,8 @@ struct ContentView: View {
     private let buttonWidth: CGFloat = 70
     private let buttonHeight: CGFloat = 10
     
+    @ObservedObject var campaignList: CampaignList = CampaignList(campaigns: campaignData)
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 10) {
@@ -127,6 +129,17 @@ struct ContentView: View {
                                 .frame(width: 60, height: 60)
                         }
                     }
+                    ForEach(0..<campaignList.campaigns.count) { i in
+                        VStack {
+                            Text(campaignList.campaigns[i].title)
+                            Text(campaignList.campaigns[i].thumbnail)
+                            Text(campaignList.campaigns[i].promoterInfo.name)
+                            Text(String(campaignList.campaigns[i].ratio))
+                            Text(String(campaignList.campaigns[i].myInfo.story))
+                            Text(String(campaignList.campaigns[i].organization))
+                            Text(String(campaignList.campaigns[0].dueDate))
+                        }
+                    }
                 }
             }
         }
@@ -139,5 +152,13 @@ struct ContentView_Previews: PreviewProvider {
             ContentView()
                 .previewDevice("iPhone 11")
         }
+    }
+}
+
+class CampaignList: ObservableObject {
+    @Published var campaigns: [Campaign]
+    
+    init(campaigns: [Campaign] = []) {
+        self.campaigns = campaigns
     }
 }

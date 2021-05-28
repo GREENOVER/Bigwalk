@@ -1,5 +1,7 @@
 import Foundation
 
+var campaignData: [Campaign] = JSONDecode.shared.loadJSON("CampaignMock.json")
+
 struct Campaign: Decodable {
     let thumbnail: String
     let title: String
@@ -39,7 +41,7 @@ struct Campaign: Decodable {
         let current = dateFormatter.string(from: date)
         let currentDate = dateFormatter.date(from: current)
         
-        if (dateFormatter.date(from: endDate)?.timeIntervalSince(currentDate!))! > 0 {
+        if (dateFormatter.date(from: endDate)?.timeIntervalSince(currentDate!))! < 0 {
             return true
         } else {
             return false

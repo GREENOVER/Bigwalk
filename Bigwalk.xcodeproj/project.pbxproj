@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9A16CD9C2661139E00C62760 /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A16CD9B2661139E00C62760 /* Campaign.swift */; };
+		9AE0B84C26611EF6000A8F2C /* JSONDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE0B84B26611EF6000A8F2C /* JSONDecode.swift */; };
+		9AE0B85026612271000A8F2C /* CampaignMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AE0B84F26612271000A8F2C /* CampaignMock.json */; };
 		9AF581BA26605CFD000C40FC /* BigwalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF581B926605CFD000C40FC /* BigwalkApp.swift */; };
 		9AF581BC26605CFD000C40FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF581BB26605CFD000C40FC /* ContentView.swift */; };
 		9AF581BE26605CFD000C40FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AF581BD26605CFD000C40FC /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 
 /* Begin PBXFileReference section */
 		9A16CD9B2661139E00C62760 /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaign.swift; sourceTree = "<group>"; };
+		9AE0B84B26611EF6000A8F2C /* JSONDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecode.swift; sourceTree = "<group>"; };
+		9AE0B84F26612271000A8F2C /* CampaignMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CampaignMock.json; sourceTree = "<group>"; };
 		9AF581B626605CFD000C40FC /* Bigwalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bigwalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF581B926605CFD000C40FC /* BigwalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigwalkApp.swift; sourceTree = "<group>"; };
 		9AF581BB26605CFD000C40FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				9AF581B926605CFD000C40FC /* BigwalkApp.swift */,
 				9AF581BB26605CFD000C40FC /* ContentView.swift */,
 				9A16CD9B2661139E00C62760 /* Campaign.swift */,
+				9AE0B84F26612271000A8F2C /* CampaignMock.json */,
+				9AE0B84B26611EF6000A8F2C /* JSONDecode.swift */,
 				9AC3B23F266062B3002AC34F /* Supporting Files */,
 				9AF581BF26605CFD000C40FC /* Preview Content */,
 			);
@@ -138,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AF581C126605CFD000C40FC /* Preview Assets.xcassets in Resources */,
+				9AE0B85026612271000A8F2C /* CampaignMock.json in Resources */,
 				9AF581BE26605CFD000C40FC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AE0B84C26611EF6000A8F2C /* JSONDecode.swift in Sources */,
 				9AF581BC26605CFD000C40FC /* ContentView.swift in Sources */,
 				9A16CD9C2661139E00C62760 /* Campaign.swift in Sources */,
 				9AF581BA26605CFD000C40FC /* BigwalkApp.swift in Sources */,
