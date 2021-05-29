@@ -103,43 +103,56 @@ struct ContentView: View {
                 }
                 
                 List {
-                    HStack(spacing: 10) {
-                        KFImage(URL(string: campaignList.campaigns[0].thumbnail)!).resizable().frame(width: 100, height: 100).cornerRadius(20)
-                        VStack(alignment: .leading) {
-                            Text("세상에서 제일 쉬운 나눔").font(.system(size: 20, weight: .bold))
-                            Text("네패스 기업문화팀").foregroundColor(.gray)
-                                .font(.system(size: 15, weight: .bold))
-                            Button("공개형") {
-                            }.font(.system(size: 10, weight: .bold))
-                            .frame(width: 40, height: 15)
-                            .background(Color.green)
-                            .cornerRadius(10)
-                            .foregroundColor(.white)
-                            HStack {
-                                Text("90%").foregroundColor(.blue)
-                                    .font(.system(size: 15, weight: .bold))
-                                Spacer()
-                                Text("진행중").foregroundColor(.blue)
-                                    .font(.system(size: 15, weight: .bold))
-                            }
-                            ProgressView(value: 0.9)
-                        }
-                        Button(action: {print("기부")}){
-                            Image("contribution")
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                        }
-                    }
                     ForEach(0..<campaignList.campaigns.count) { i in
                         if clickPicker == campaignList.campaigns[i].organization {
-                            VStack {
-                                Text(campaignList.campaigns[i].title)
+                            HStack(spacing: 10) {
                                 KFImage(URL(string: campaignList.campaigns[i].thumbnail)!).resizable().frame(width: 100, height: 100).cornerRadius(20)
-                                Text(campaignList.campaigns[i].promoterInfo.name)
-                                Text(String(campaignList.campaigns[i].ratio))
-                                Text(String(campaignList.campaigns[i].myInfo.story))
-                                Text(String(campaignList.campaigns[i].organization))
-                                Text(String(campaignList.campaigns[0].dueDate))
+                                VStack(alignment: .leading) {
+                                    Text(campaignList.campaigns[i].title).font(.system(size: 20, weight: .bold))
+                                    Text(campaignList.campaigns[i].promoterInfo.name).foregroundColor(.gray)
+                                        .font(.system(size: 15, weight: .bold))
+                                    if clickPicker == 1  {
+                                        Button("공개형") {
+                                        }.font(.system(size: 10, weight: .bold))
+                                        .frame(width: 40, height: 15)
+                                        .background(Color.green)
+                                        .cornerRadius(10)
+                                        .foregroundColor(.white)
+                                    } else {
+                                        Button("그룹형") {
+                                        }.font(.system(size: 10, weight: .bold))
+                                        .frame(width: 40, height: 15)
+                                        .background(Color.yellow)
+                                        .cornerRadius(10)
+                                        .foregroundColor(.white)
+                                    }
+                                    HStack {
+                                        Text(campaignList.campaigns[i].ratioStr).foregroundColor(.blue)
+                                            .font(.system(size: 15, weight: .bold))
+                                        Spacer()
+//                                        switch campaignList.campaigns[0].state {
+//                                        case 1:
+//                                            Text("종료").foregroundColor(.red)
+//                                                .font(.system(size: 15, weight: .bold))
+//                                        case 2:
+//                                            Text("기부완료").foregroundColor(.green)
+//                                                .font(.system(size: 15, weight: .bold))
+//                                        case 3:
+//                                            Text("진행중").foregroundColor(.blue)
+//                                                .font(.system(size: 15, weight: .bold))
+//                                        default:
+//                                            break
+//                                        }
+                                    }
+                                    ProgressView(value: (campaignList.campaigns[i].progressRatio))
+                                }
+                                if campaignList.campaigns[i].dueDate == true {
+                                    Button(action: {print("기부")}){
+                                        Image("contribution")
+                                            .resizable()
+                                            .frame(width: 60, height: 60)
+                                    }
+                                }
                             }
                         }
                     }
@@ -149,14 +162,14 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContentView()
-                .previewDevice("iPhone 11")
-        }
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            ContentView()
+//                .previewDevice("iPhone 11")
+//        }
+//    }
+//}
 
 class CampaignList: ObservableObject {
     @Published var campaigns: [Campaign]

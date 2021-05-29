@@ -35,14 +35,12 @@ struct Campaign: Decodable {
     
     var dueDate: Bool {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd'T'HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
-        let date = Date()
-        let current = dateFormatter.string(from: date)
-        let currentDate = dateFormatter.date(from: current)
+        let end: Date = dateFormatter.date(from: endDate)!
+        let now = Date()
         
-        if (dateFormatter.date(from: endDate)?.timeIntervalSince(currentDate!))! < 0 {
+        if end.timeIntervalSince(now) > 0 {
             return true
         } else {
             return false
@@ -54,6 +52,33 @@ struct Campaign: Decodable {
             return 1
         } else {
             return 2
+        }
+    }
+    
+    var progressRatio: Double {
+        if ratio == 0 {
+            return 0.0
+        } else {
+            let progress = (Double(ratio) / 100.0)
+            if progress >= 1.0 {
+                return 1.0
+            } else {
+                return progress
+            }
+        }
+    }
+    
+    var ratioStr: String {
+        return String("\(ratio)%")
+    }
+    
+    var state: Int {
+        if dueDate == false && myInfo.story == false {
+            return 1
+        } else if dueDate == false && myInfo.story == true {
+            return 2
+        } else {
+            return 3
         }
     }
 }
