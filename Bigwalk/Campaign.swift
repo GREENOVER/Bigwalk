@@ -1,13 +1,11 @@
 import Foundation
 import SwiftUI
 
-var campaignData: [Campaign] = JSONDecode.shared.loadJSON("CampaignMock.json")!
-var sortData = campaignData.sorted{$0.ratio < $1.ratio}
-
-var undisableData = sortData.filter{$0.dueDate == true}
-var disableData = sortData.filter{$0.dueDate == false}
-
-var totalData = undisableData + disableData
+let campaignData: [Campaign] = JSONDecode.shared.loadJSON("CampaignMock.json")!
+let sortData = campaignData.sorted{$0.ratio < $1.ratio}
+let undisableData = sortData.filter{$0.dueDate == true}
+let disableData = sortData.filter{$0.dueDate == false}
+let totalData = undisableData + disableData
 
 struct Campaign: Decodable {
     let thumbnail: String
