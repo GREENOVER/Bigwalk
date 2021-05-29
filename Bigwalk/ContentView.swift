@@ -1,4 +1,5 @@
 import SwiftUI
+import Kingfisher
 
 struct ContentView: View {
     @State var clickPicker = 1
@@ -103,7 +104,7 @@ struct ContentView: View {
                 
                 List {
                     HStack(spacing: 10) {
-                        Image("thumbnail").resizable().frame(width: 100, height: 100)
+                        KFImage(URL(string: campaignList.campaigns[0].thumbnail)!).resizable().frame(width: 100, height: 100).cornerRadius(20)
                         VStack(alignment: .leading) {
                             Text("세상에서 제일 쉬운 나눔").font(.system(size: 20, weight: .bold))
                             Text("네패스 기업문화팀").foregroundColor(.gray)
@@ -133,7 +134,7 @@ struct ContentView: View {
                         if clickPicker == campaignList.campaigns[i].organization {
                             VStack {
                                 Text(campaignList.campaigns[i].title)
-                                Text(campaignList.campaigns[i].thumbnail)
+                                KFImage(URL(string: campaignList.campaigns[i].thumbnail)!).resizable().frame(width: 100, height: 100).cornerRadius(20)
                                 Text(campaignList.campaigns[i].promoterInfo.name)
                                 Text(String(campaignList.campaigns[i].ratio))
                                 Text(String(campaignList.campaigns[i].myInfo.story))
