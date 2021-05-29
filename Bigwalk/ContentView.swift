@@ -7,7 +7,7 @@ struct ContentView: View {
     private let buttonWidth: CGFloat = 70
     private let buttonHeight: CGFloat = 10
     
-    @ObservedObject var campaignList: CampaignList = CampaignList(campaigns: sortData)
+    @ObservedObject var campaignList: CampaignList = CampaignList(campaigns: totalData)
     
     var body: some View {
         GeometryReader { geometry in
