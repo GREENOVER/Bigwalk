@@ -140,19 +140,9 @@ struct ContentView: View {
                                             .foregroundColor(.blue)
                                             .font(.system(size: 15, weight: .bold))
                                         Spacer()
-//                                        switch campaignList.campaigns[0].state {
-//                                        case 1:
-//                                            Text("종료").foregroundColor(.red)
-//                                                .font(.system(size: 15, weight: .bold))
-//                                        case 2:
-//                                            Text("기부완료").foregroundColor(.green)
-//                                                .font(.system(size: 15, weight: .bold))
-//                                        case 3:
-//                                            Text("진행중").foregroundColor(.blue)
-//                                                .font(.system(size: 15, weight: .bold))
-//                                        default:
-//                                            break
-//                                        }
+                                        Text(campaignList.campaigns[i].state)
+                                            .foregroundColor(.blue)
+                                            .font(.system(size: 15, weight: .bold))
                                     }
                                     ProgressView(value: (campaignList.campaigns[i].progressRatio))
                                 }

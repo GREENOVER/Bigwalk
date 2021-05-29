@@ -72,13 +72,13 @@ struct Campaign: Decodable {
         return String("\(ratio)%")
     }
     
-    var state: Int {
-        if dueDate == false && myInfo.story == false {
-            return 1
-        } else if dueDate == false && myInfo.story == true {
-            return 2
+    var state: String {
+        if dueDate == true {
+            return "진행중"
+        } else if dueDate == false && myInfo.story == false {
+            return "종료"
         } else {
-            return 3
+            return "기부완료"
         }
     }
 }
