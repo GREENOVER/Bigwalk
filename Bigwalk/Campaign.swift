@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 var campaignData: [Campaign] = JSONDecode.shared.loadJSON("CampaignMock.json")!
 var sortData = campaignData.sorted{$0.ratio < $1.ratio}
@@ -72,13 +73,13 @@ struct Campaign: Decodable {
         return String("\(ratio)%")
     }
     
-    var state: String {
+    var state: (String, Color) {
         if dueDate == true {
-            return "진행중"
+            return ("진행중", .blue)
         } else if dueDate == false && myInfo.story == false {
-            return "종료"
+            return ("종료", .red)
         } else {
-            return "기부완료"
+            return ("기부완료", .green)
         }
     }
 }

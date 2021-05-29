@@ -109,15 +109,15 @@ struct ContentView: View {
                                 KFImage(URL(string: campaignList.campaigns[i].thumbnail)!)
                                     .resizable()
                                     .frame(width: 100, height: 100).cornerRadius(20)
-                                    .opacity(campaignList.campaigns[i].dueDate ? 0.3 : 1)
+                                    .opacity(campaignList.campaigns[i].dueDate ? 1 : 0.3)
                                 VStack(alignment: .leading) {
                                     Text(campaignList.campaigns[i].title)
                                         .font(.system(size: 20, weight: .bold))
-                                        .opacity(campaignList.campaigns[i].dueDate ? 0.3 : 1)
+                                        .opacity(campaignList.campaigns[i].dueDate ? 1 : 0.3)
                                     Text(campaignList.campaigns[i].promoterInfo.name)
                                         .foregroundColor(.gray)
                                         .font(.system(size: 15, weight: .bold))
-                                        .opacity(campaignList.campaigns[i].dueDate ? 0.3 : 1)
+                                        .opacity(campaignList.campaigns[i].dueDate ? 1 : 0.3)
                                     if clickPicker == 1  {
                                         Button("공개형") {
                                         }
@@ -140,8 +140,8 @@ struct ContentView: View {
                                             .foregroundColor(.blue)
                                             .font(.system(size: 15, weight: .bold))
                                         Spacer()
-                                        Text(campaignList.campaigns[i].state)
-                                            .foregroundColor(.blue)
+                                        Text(campaignList.campaigns[i].state.0)
+                                            .foregroundColor(campaignList.campaigns[i].state.1)
                                             .font(.system(size: 15, weight: .bold))
                                     }
                                     ProgressView(value: (campaignList.campaigns[i].progressRatio))
@@ -151,7 +151,7 @@ struct ContentView: View {
                                         .resizable()
                                         .frame(width: 60, height: 60)
                                 }
-                                .opacity(campaignList.campaigns[i].dueDate ? 0 : 1)
+                                .opacity(campaignList.campaigns[i].dueDate ? 1 : 0)
                             }
                         }
                     }
