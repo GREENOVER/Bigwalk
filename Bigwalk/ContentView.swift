@@ -104,21 +104,21 @@ struct ContentView: View {
                 }
                 
                 List {
-                    ForEach(0..<fetch.listData.count, id: \.self) { i in
-                        if clickPicker == fetch.listData[i].organization {
+                    ForEach(0..<fetch.totalData.count, id: \.self) { i in
+                        if clickPicker == fetch.totalData[i].organization {
                             HStack(spacing: 10) {
-                                KFImage(URL(string: fetch.listData[i].thumbnail)!)
+                                KFImage(URL(string: fetch.totalData[i].thumbnail)!)
                                     .resizable()
                                     .frame(width: 100, height: 100).cornerRadius(20)
-                                    .opacity(fetch.listData[i].dueDate ? 1 : 0.3)
+                                    .opacity(fetch.totalData[i].dueDate ? 1 : 0.3)
                                 VStack(alignment: .leading) {
-                                    Text(fetch.listData[i].title)
+                                    Text(fetch.totalData[i].title)
                                         .font(.system(size: 20, weight: .bold))
-                                        .opacity(fetch.listData[i].dueDate ? 1 : 0.3)
-                                    Text(fetch.listData[i].promoterInfo.name)
+                                        .opacity(fetch.totalData[i].dueDate ? 1 : 0.3)
+                                    Text(fetch.totalData[i].promoterInfo.name)
                                         .foregroundColor(.gray)
                                         .font(.system(size: 15, weight: .bold))
-                                        .opacity(fetch.listData[i].dueDate ? 1 : 0.3)
+                                        .opacity(fetch.totalData[i].dueDate ? 1 : 0.3)
                                     if clickPicker == 1  {
                                         Button("공개형") {
                                         }
@@ -137,22 +137,22 @@ struct ContentView: View {
                                         .foregroundColor(.white)
                                     }
                                     HStack {
-                                        Text(fetch.listData[i].ratioStr)
+                                        Text(fetch.totalData[i].ratioStr)
                                             .foregroundColor(.blue)
                                             .font(.system(size: 15, weight: .bold))
                                         Spacer()
-                                        Text(fetch.listData[i].state.0)
-                                            .foregroundColor(fetch.listData[i].state.1)
+                                        Text(fetch.totalData[i].state.0)
+                                            .foregroundColor(fetch.totalData[i].state.1)
                                             .font(.system(size: 15, weight: .bold))
                                     }
-                                    ProgressView(value: (fetch.listData[i].progressRatio))
+                                    ProgressView(value: (fetch.totalData[i].progressRatio))
                                 }
                                 Button(action: {print("기부")}){
                                     Image("contribution")
                                         .resizable()
                                         .frame(width: 60, height: 60)
                                 }
-                                .opacity(fetch.listData[i].dueDate ? 1 : 0)
+                                .opacity(fetch.totalData[i].dueDate ? 1 : 0)
                             }
                         }
                     }
@@ -181,6 +181,7 @@ class CampaignList: ObservableObject {
 
 class FetchCampaign: ObservableObject {
     @Published var listData = [Campaign]()
+    @Published var totalData = [Campaign]()
     private let url = "https://app-dev.bigwalk.co.kr:10000/api/campaigns/category/0/story?page=0&size=60"
     private let headers: HTTPHeaders = ["X-AUTH-TOKEN": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODUiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjExNTYzMzgxLCJleHAiOjE3MDYxNzEzODF9._4DPRRFx09yIBVLqwbTGVSuP6vy5fM4UP3vJXszfP4w"]
 
@@ -197,6 +198,11 @@ class FetchCampaign: ObservableObject {
                         let data = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
                         let list = try JSONDecoder().decode([Campaign].self, from: data)
                         self.listData.append(contentsOf: list)
+                        
+                        let sortData = listData.sorted{$0.ratio < $1.ratio}
+                        let undisableData = sortData.filter{$0.dueDate == true}
+                        let disableData = sortData.filter{$0.dueDate == false}
+                        totalData = undisableData + disableData
                     } catch {
                     }
                 case .failure(let error):
