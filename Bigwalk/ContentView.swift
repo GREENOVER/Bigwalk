@@ -1,5 +1,6 @@
 import SwiftUI
 import Kingfisher
+import Alamofire
 
 struct ContentView: View {
     @State var clickPicker = 1
@@ -8,6 +9,7 @@ struct ContentView: View {
     private let buttonHeight: CGFloat = 10
     
     @ObservedObject var campaignList: CampaignList = CampaignList(campaigns: totalData)
+    @ObservedObject var fetch = FetchCampaign()
     
     var body: some View {
         GeometryReader { geometry in
@@ -16,7 +18,6 @@ struct ContentView: View {
                     Text("공개형").tag(1)
                     Text("그룹형").tag(2)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
-                
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
                         Spacer(minLength: 5)
@@ -103,21 +104,21 @@ struct ContentView: View {
                 }
                 
                 List {
-                    ForEach(0..<campaignList.campaigns.count) { i in
-                        if clickPicker == campaignList.campaigns[i].organization {
+                    ForEach(0..<fetch.listData.count, id: \.self) { i in
+                        if clickPicker == fetch.listData[i].organization {
                             HStack(spacing: 10) {
-                                KFImage(URL(string: campaignList.campaigns[i].thumbnail)!)
+                                KFImage(URL(string: fetch.listData[i].thumbnail)!)
                                     .resizable()
                                     .frame(width: 100, height: 100).cornerRadius(20)
-                                    .opacity(campaignList.campaigns[i].dueDate ? 1 : 0.3)
+                                    .opacity(fetch.listData[i].dueDate ? 1 : 0.3)
                                 VStack(alignment: .leading) {
-                                    Text(campaignList.campaigns[i].title)
+                                    Text(fetch.listData[i].title)
                                         .font(.system(size: 20, weight: .bold))
-                                        .opacity(campaignList.campaigns[i].dueDate ? 1 : 0.3)
-                                    Text(campaignList.campaigns[i].promoterInfo.name)
+                                        .opacity(fetch.listData[i].dueDate ? 1 : 0.3)
+                                    Text(fetch.listData[i].promoterInfo.name)
                                         .foregroundColor(.gray)
                                         .font(.system(size: 15, weight: .bold))
-                                        .opacity(campaignList.campaigns[i].dueDate ? 1 : 0.3)
+                                        .opacity(fetch.listData[i].dueDate ? 1 : 0.3)
                                     if clickPicker == 1  {
                                         Button("공개형") {
                                         }
@@ -136,22 +137,22 @@ struct ContentView: View {
                                         .foregroundColor(.white)
                                     }
                                     HStack {
-                                        Text(campaignList.campaigns[i].ratioStr)
+                                        Text(fetch.listData[i].ratioStr)
                                             .foregroundColor(.blue)
                                             .font(.system(size: 15, weight: .bold))
                                         Spacer()
-                                        Text(campaignList.campaigns[i].state.0)
-                                            .foregroundColor(campaignList.campaigns[i].state.1)
+                                        Text(fetch.listData[i].state.0)
+                                            .foregroundColor(fetch.listData[i].state.1)
                                             .font(.system(size: 15, weight: .bold))
                                     }
-                                    ProgressView(value: (campaignList.campaigns[i].progressRatio))
+                                    ProgressView(value: (fetch.listData[i].progressRatio))
                                 }
                                 Button(action: {print("기부")}){
                                     Image("contribution")
                                         .resizable()
                                         .frame(width: 60, height: 60)
                                 }
-                                .opacity(campaignList.campaigns[i].dueDate ? 1 : 0)
+                                .opacity(fetch.listData[i].dueDate ? 1 : 0)
                             }
                         }
                     }
@@ -175,5 +176,33 @@ class CampaignList: ObservableObject {
     
     init(campaigns: [Campaign] = []) {
         self.campaigns = campaigns
+    }
+}
+
+class FetchCampaign: ObservableObject {
+    @Published var listData = [Campaign]()
+    private let url = "https://app-dev.bigwalk.co.kr:10000/api/campaigns/category/0/story?page=0&size=60"
+    private let headers: HTTPHeaders = ["X-AUTH-TOKEN": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODUiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjExNTYzMzgxLCJleHAiOjE3MDYxNzEzODF9._4DPRRFx09yIBVLqwbTGVSuP6vy5fM4UP3vJXszfP4w"]
+
+    let fetchGroup = DispatchGroup()
+    
+    init() {
+        fetchGroup.enter()
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { [self] response in
+                switch response.result {
+                case .success(let value):
+                    print(value)
+                    do {
+                        let data = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
+                        let list = try JSONDecoder().decode([Campaign].self, from: data)
+                        self.listData.append(contentsOf: list)
+                    } catch {
+                    }
+                case .failure(let error):
+                    break
+                }
+                self.fetchGroup.leave()
+            }
     }
 }

@@ -7,7 +7,8 @@ let undisableData = sortData.filter{$0.dueDate == true}
 let disableData = sortData.filter{$0.dueDate == false}
 let totalData = undisableData + disableData
 
-struct Campaign: Decodable {
+struct Campaign: Decodable, Identifiable {
+    var id = UUID()
     let thumbnail: String
     let title: String
     let ratio: Int

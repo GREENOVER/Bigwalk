@@ -10,7 +10,6 @@
 		9A16CD9C2661139E00C62760 /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A16CD9B2661139E00C62760 /* Campaign.swift */; };
 		9A2E08432661D3B800C06F3E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2E08422661D3B800C06F3E /* Kingfisher */; };
 		9A7E95D626621F86001E9392 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9A7E95D526621F86001E9392 /* Alamofire */; };
-		9A7E95D926622045001E9392 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E95D826622045001E9392 /* HTTPManager.swift */; };
 		9AE0B84C26611EF6000A8F2C /* JSONDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE0B84B26611EF6000A8F2C /* JSONDecode.swift */; };
 		9AE0B85026612271000A8F2C /* CampaignMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AE0B84F26612271000A8F2C /* CampaignMock.json */; };
 		9AF581BA26605CFD000C40FC /* BigwalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF581B926605CFD000C40FC /* BigwalkApp.swift */; };
@@ -21,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		9A16CD9B2661139E00C62760 /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaign.swift; sourceTree = "<group>"; };
-		9A7E95D826622045001E9392 /* HTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		9AE0B84B26611EF6000A8F2C /* JSONDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecode.swift; sourceTree = "<group>"; };
 		9AE0B84F26612271000A8F2C /* CampaignMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CampaignMock.json; sourceTree = "<group>"; };
 		9AF581B626605CFD000C40FC /* Bigwalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bigwalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,7 +75,6 @@
 				9AF581BB26605CFD000C40FC /* ContentView.swift */,
 				9A16CD9B2661139E00C62760 /* Campaign.swift */,
 				9AE0B84B26611EF6000A8F2C /* JSONDecode.swift */,
-				9A7E95D826622045001E9392 /* HTTPManager.swift */,
 				9AE0B84F26612271000A8F2C /* CampaignMock.json */,
 				9AC3B23F266062B3002AC34F /* Supporting Files */,
 				9AF581BF26605CFD000C40FC /* Preview Content */,
@@ -173,7 +170,6 @@
 			files = (
 				9AE0B84C26611EF6000A8F2C /* JSONDecode.swift in Sources */,
 				9AF581BC26605CFD000C40FC /* ContentView.swift in Sources */,
-				9A7E95D926622045001E9392 /* HTTPManager.swift in Sources */,
 				9A16CD9C2661139E00C62760 /* Campaign.swift in Sources */,
 				9AF581BA26605CFD000C40FC /* BigwalkApp.swift in Sources */,
 			);
