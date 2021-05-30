@@ -1,5 +1,6 @@
 import Foundation
 
+// MARK: Mock 데이터 디코딩
 class JSONDecode {
     static let shared = JSONDecode()
     
@@ -7,14 +8,14 @@ class JSONDecode {
         let data: Data
         
         guard let file = Bundle.main.url(forResource: filename, withExtension: nil) else {
-            print("\(filename) not found.")
+            print("\(filename)을 찾을 수 없습니다.")
             return nil
         }
         
         do {
             data = try Data(contentsOf: file)
         } catch {
-            print("Could not load \(filename): (error)")
+            print("\(filename)의 데이터를 불러올 수 없습니다.")
             return nil
         }
         

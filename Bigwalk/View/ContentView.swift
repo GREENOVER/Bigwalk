@@ -1,6 +1,5 @@
 import SwiftUI
 import Kingfisher
-import Alamofire
 
 struct ContentView: View {
     @State var clickPicker = 1
@@ -8,7 +7,6 @@ struct ContentView: View {
     private let buttonWidth: CGFloat = 70
     private let buttonHeight: CGFloat = 10
     
-    @ObservedObject var campaignList: CampaignList = CampaignList(campaigns: totalData)
     @ObservedObject var fetch = FetchCampaign()
     
     var body: some View {
@@ -106,19 +104,20 @@ struct ContentView: View {
                 List {
                     ForEach(0..<fetch.totalData.count, id: \.self) { i in
                         if clickPicker == fetch.totalData[i].organization {
+                            let fetchData = fetch.totalData[i]
                             HStack(spacing: 10) {
-                                KFImage(URL(string: fetch.totalData[i].thumbnail)!)
+                                KFImage(URL(string: fetchData.thumbnail)!)
                                     .resizable()
                                     .frame(width: 100, height: 100).cornerRadius(20)
-                                    .opacity(fetch.totalData[i].dueDate ? 1 : 0.3)
+                                    .opacity(fetchData.dueDate ? 1 : 0.3)
                                 VStack(alignment: .leading) {
-                                    Text(fetch.totalData[i].title)
+                                    Text(fetchData.title)
                                         .font(.system(size: 20, weight: .bold))
-                                        .opacity(fetch.totalData[i].dueDate ? 1 : 0.3)
-                                    Text(fetch.totalData[i].promoterInfo.name)
+                                        .opacity(fetchData.dueDate ? 1 : 0.3)
+                                    Text(fetchData.promoterInfo.name)
                                         .foregroundColor(.gray)
                                         .font(.system(size: 15, weight: .bold))
-                                        .opacity(fetch.totalData[i].dueDate ? 1 : 0.3)
+                                        .opacity(fetchData.dueDate ? 1 : 0.3)
                                     if clickPicker == 1  {
                                         Button("공개형") {
                                         }
@@ -137,22 +136,22 @@ struct ContentView: View {
                                         .foregroundColor(.white)
                                     }
                                     HStack {
-                                        Text(fetch.totalData[i].ratioStr)
+                                        Text(fetchData.ratioStr)
                                             .foregroundColor(.blue)
                                             .font(.system(size: 15, weight: .bold))
                                         Spacer()
-                                        Text(fetch.totalData[i].state.0)
-                                            .foregroundColor(fetch.totalData[i].state.1)
+                                        Text(fetchData.state.0)
+                                            .foregroundColor(fetchData.state.1)
                                             .font(.system(size: 15, weight: .bold))
                                     }
-                                    ProgressView(value: (fetch.totalData[i].progressRatio))
+                                    ProgressView(value: (fetchData.progressRatio))
                                 }
-                                Button(action: {print("기부")}){
+                                Button(action: {}){
                                     Image("contribution")
                                         .resizable()
                                         .frame(width: 60, height: 60)
                                 }
-                                .opacity(fetch.totalData[i].dueDate ? 1 : 0)
+                                .opacity(fetchData.dueDate ? 1 : 0)
                             }
                         }
                     }
@@ -162,53 +161,11 @@ struct ContentView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            ContentView()
-//                .previewDevice("iPhone 11")
-//        }
-//    }
-//}
-
-class CampaignList: ObservableObject {
-    @Published var campaigns: [Campaign]
-    
-    init(campaigns: [Campaign] = []) {
-        self.campaigns = campaigns
-    }
-}
-
-class FetchCampaign: ObservableObject {
-    @Published var listData = [Campaign]()
-    @Published var totalData = [Campaign]()
-    private let url = "https://app-dev.bigwalk.co.kr:10000/api/campaigns/category/0/story?page=0&size=60"
-    private let headers: HTTPHeaders = ["X-AUTH-TOKEN": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODUiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjExNTYzMzgxLCJleHAiOjE3MDYxNzEzODF9._4DPRRFx09yIBVLqwbTGVSuP6vy5fM4UP3vJXszfP4w"]
-
-    let fetchGroup = DispatchGroup()
-    
-    init() {
-        fetchGroup.enter()
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
-            .responseJSON { [self] response in
-                switch response.result {
-                case .success(let value):
-                    print(value)
-                    do {
-                        let data = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
-                        let list = try JSONDecoder().decode([Campaign].self, from: data)
-                        self.listData.append(contentsOf: list)
-                        
-                        let sortData = listData.sorted{$0.ratio < $1.ratio}
-                        let undisableData = sortData.filter{$0.dueDate == true}
-                        let disableData = sortData.filter{$0.dueDate == false}
-                        totalData = undisableData + disableData
-                    } catch {
-                    }
-                case .failure(let error):
-                    break
-                }
-                self.fetchGroup.leave()
-            }
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ContentView()
+                .previewDevice("iPhone 11")
+        }
     }
 }
