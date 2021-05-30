@@ -21,10 +21,16 @@ struct ContentView: View {
                     HStack(spacing: 10) {
                         Spacer(minLength: 5)
                         ForEach(0..<fetch.myData.count, id: \.self) { i in
-                            KFImage(URL(string: fetch.myData[i].thumbnail)!)
+                            let myData = fetch.myData[i]
+                            VStack {
+                            KFImage(URL(string: myData.thumbnail)!)
                                 .resizable()
                                 .frame(width: 100, height: 100).cornerRadius(20)
-                                .opacity(fetch.myData[i].dueDate ? 1 : 0.3)
+                                .opacity(myData.dueDate ? 1 : 0.3)
+                            Text(fetch.myData[i].title)
+                                .foregroundColor(.gray)
+                                .font(.system(size: 15, weight: .bold))
+                            }
                         }
                     }
                 }
