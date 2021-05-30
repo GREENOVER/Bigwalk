@@ -20,6 +20,17 @@ struct ContentView: View {
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
                         Spacer(minLength: 5)
+                        ForEach(0..<fetch.myData.count, id: \.self) { i in
+                            KFImage(URL(string: fetch.myData[i].thumbnail)!)
+                                .resizable()
+                                .frame(width: 100, height: 100).cornerRadius(20)
+                                .opacity(fetch.myData[i].dueDate ? 1 : 0.3)
+                        }
+                    }
+                }
+                ScrollView(.horizontal) {
+                    HStack(spacing: 10) {
+                        Spacer(minLength: 5)
                         
                         Button(action: {
                             self.clickCheck = 1

@@ -5,6 +5,7 @@ import Alamofire
 class FetchCampaign: ObservableObject {
     @Published var listData = [Campaign]()
     @Published var totalData = [Campaign]()
+    @Published var myData = [Campaign]()
     private let url = "https://app-dev.bigwalk.co.kr:10000/api/campaigns/category/0/story?page=0&size=60"
     private let headers: HTTPHeaders = ["X-AUTH-TOKEN": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODUiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjExNTYzMzgxLCJleHAiOjE3MDYxNzEzODF9._4DPRRFx09yIBVLqwbTGVSuP6vy5fM4UP3vJXszfP4w"]
     
@@ -22,6 +23,7 @@ class FetchCampaign: ObservableObject {
                         let undisableData = sortData.filter{$0.dueDate == true}
                         let disableData = sortData.filter{$0.dueDate == false}
                         totalData = undisableData + disableData
+                        myData = listData.filter{$0.myInfo.story == true}
                     } catch DecodingError.dataCorrupted(let context) {
                         print("데이터가 손상되었거나 유효하지 않습니다.")
                         print(context.codingPath, context.debugDescription, context.underlyingError ?? "" , separator: "\n")
