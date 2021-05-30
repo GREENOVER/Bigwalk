@@ -152,7 +152,7 @@ struct ContentView: View {
                                         .frame(width: 60, height: 60)
                                 }
                                 .opacity(fetchData.dueDate ? 1 : 0)
-                            }
+                            }.hideRowSeparator()
                         }
                     }
                 }
@@ -161,11 +161,18 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContentView()
-                .previewDevice("iPhone 11")
-        }
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            ContentView()
+//                .previewDevice("iPhone 11")
+//        }
+//    }
+//}
+
+// MARK: 리스트 셀 구분선 숨김 처리
+extension View {
+    func hideRowSeparator(insets: EdgeInsets = .defaultListRowInsets, background: Color = .white) -> some View {
+        modifier(HideRowSeparatorModifier(insets: insets, background: background))
     }
 }
