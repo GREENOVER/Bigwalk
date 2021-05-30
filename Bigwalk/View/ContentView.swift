@@ -16,6 +16,7 @@ struct ContentView: View {
                     Text("공개형").tag(1)
                     Text("그룹형").tag(2)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
+                Text("내가 참여한 캠페인").frame(maxWidth: .infinity, alignment: .center)
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
                         Spacer(minLength: 5)
