@@ -17,5 +17,18 @@ class BigwalkTests: XCTestCase {
         XCTAssertEqual(ratioData[0].ratio, 0)
         XCTAssertEqual(ratioData[59].ratio, 2956)
     }
+    
+    func testFilteringCampaign() throws {
+        let data: [Campaign] = JSONDecode.shared.loadJSON("CampaignMock.json")!
+        let openData = data.filter{$0.organization == 1}
+        let groupData = data.filter{$0.organization == 2}
+        
+        for i in openData {
+           XCTAssertEqual(i.organization, 1)
+        }
+        for i in groupData {
+           XCTAssertEqual(i.organization, 2)
+        }
+    }
 
 }
