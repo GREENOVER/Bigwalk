@@ -1,0 +1,6 @@
+module KakaoSDKTemplate {
+  umbrella header "KakaoSDKTemplate-library-umbrella.h"
+
+  export *
+  module * { export * }
+}

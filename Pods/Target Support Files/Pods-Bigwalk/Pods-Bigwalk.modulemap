@@ -1,0 +1,6 @@
+framework module Pods_Bigwalk {
+  umbrella header "Pods-Bigwalk-umbrella.h"
+
+  export *
+  module * { export * }
+}

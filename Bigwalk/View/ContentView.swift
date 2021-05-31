@@ -1,5 +1,9 @@
 import SwiftUI
 import Kingfisher
+import KakaoSDKAuth
+import KakaoSDKUser
+//import KakaoSDKCommon
+//import KakaoSDKTalk
 
 struct ContentView: View {
     @State var clickPicker = 1
@@ -129,19 +133,41 @@ struct ContentView: View {
                         }
                     }
                 }
+                Button(action : {
+                    if (UserApi.isKakaoTalkLoginAvailable()) {
+                        UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                            print(oauthToken?.accessToken as Any)
+                            print(error as Any)
+                        }
+                    }else{
+                        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                            print(oauthToken?.accessToken as Any)
+                            print(error as Any)
+                        }
+                    }
+                }){
+                    Text("카카오 계정으로 로그인")
+                        .foregroundColor(.yellow)
+                        .font(Font.body.bold())
+                }
+                .onOpenURL(perform: { url in
+                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                        _ = AuthController.handleOpenUrl(url: url)
+                    }
+                })
             }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContentView()
-                .previewDevice("iPhone 11")
-        }
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            ContentView()
+//                .previewDevice("iPhone 11")
+//        }
+//    }
+//}
 
 // MARK: 리스트 셀 구분선 숨김 처리
 extension View {

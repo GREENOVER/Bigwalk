@@ -1,0 +1,8 @@
+${PODS_ROOT}/Target Support Files/Pods-Bigwalk/Pods-Bigwalk-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire-framework/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/KakaoSDKAuth-framework/KakaoSDKAuth.framework
+${BUILT_PRODUCTS_DIR}/KakaoSDKCommon-framework/KakaoSDKCommon.framework
+${BUILT_PRODUCTS_DIR}/KakaoSDKTalk-framework/KakaoSDKTalk.framework
+${BUILT_PRODUCTS_DIR}/KakaoSDKTemplate-framework/KakaoSDKTemplate.framework
+${BUILT_PRODUCTS_DIR}/KakaoSDKUser-framework/KakaoSDKUser.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher-framework/Kingfisher.framework
