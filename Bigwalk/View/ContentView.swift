@@ -134,14 +134,14 @@ struct ContentView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            ContentView()
-//                .previewDevice("iPhone 11")
-//        }
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ContentView()
+                .previewDevice("iPhone 11")
+        }
+    }
+}
 
 // MARK: 리스트 셀 구분선 숨김 처리
 extension View {
