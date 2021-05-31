@@ -12,6 +12,7 @@
 		9A7E95D626621F86001E9392 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9A7E95D526621F86001E9392 /* Alamofire */; };
 		9AB0231926630C7900020702 /* FetchCampaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0231826630C7900020702 /* FetchCampaign.swift */; };
 		9AB0231C26630F7D00020702 /* MockDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0231B26630F7D00020702 /* MockDataList.swift */; };
+		9AC79B2C2664AF5400E6AB44 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC79B2B2664AF5400E6AB44 /* Category.swift */; };
 		9ACABEAE2663213E002A1F2D /* HideRowSeparatorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACABEAD2663213E002A1F2D /* HideRowSeparatorModifier.swift */; };
 		9ACABEC626633111002A1F2D /* BigwalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACABEC526633111002A1F2D /* BigwalkTests.swift */; };
 		9AE0B84C26611EF6000A8F2C /* JSONDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE0B84B26611EF6000A8F2C /* JSONDecode.swift */; };
@@ -36,6 +37,7 @@
 		9A16CD9B2661139E00C62760 /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaign.swift; sourceTree = "<group>"; };
 		9AB0231826630C7900020702 /* FetchCampaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCampaign.swift; sourceTree = "<group>"; };
 		9AB0231B26630F7D00020702 /* MockDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataList.swift; sourceTree = "<group>"; };
+		9AC79B2B2664AF5400E6AB44 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		9ACABEAD2663213E002A1F2D /* HideRowSeparatorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideRowSeparatorModifier.swift; sourceTree = "<group>"; };
 		9ACABEC326633111002A1F2D /* BigwalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigwalkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACABEC526633111002A1F2D /* BigwalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigwalkTests.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				9A16CD9B2661139E00C62760 /* Campaign.swift */,
+				9AC79B2B2664AF5400E6AB44 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				9AB0231C26630F7D00020702 /* MockDataList.swift in Sources */,
 				9AB0231926630C7900020702 /* FetchCampaign.swift in Sources */,
 				9AF581BA26605CFD000C40FC /* BigwalkApp.swift in Sources */,
+				9AC79B2C2664AF5400E6AB44 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
