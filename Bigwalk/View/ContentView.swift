@@ -23,13 +23,13 @@ struct ContentView: View {
                         ForEach(0..<fetch.myData.count, id: \.self) { i in
                             let myData = fetch.myData[i]
                             VStack {
-                            KFImage(URL(string: myData.thumbnail)!)
-                                .resizable()
-                                .frame(width: 100, height: 100).cornerRadius(20)
-                                .opacity(myData.dueDate ? 1 : 0.3)
-                            Text(fetch.myData[i].title)
-                                .foregroundColor(.gray)
-                                .font(.system(size: 15, weight: .bold))
+                                KFImage(URL(string: myData.thumbnail)!)
+                                    .resizable()
+                                    .frame(width: 100, height: 100).cornerRadius(20)
+                                    .opacity(myData.dueDate ? 1 : 0.3)
+                                Text(fetch.myData[i].title)
+                                    .foregroundColor(.gray)
+                                    .font(.system(size: 15, weight: .bold))
                             }
                         }
                     }
@@ -124,10 +124,16 @@ struct ContentView: View {
                         if clickPicker == fetch.totalData[i].organization {
                             let fetchData = fetch.totalData[i]
                             HStack(spacing: 10) {
-                                KFImage(URL(string: fetchData.thumbnail)!)
-                                    .resizable()
-                                    .frame(width: 100, height: 100).cornerRadius(20)
-                                    .opacity(fetchData.dueDate ? 1 : 0.3)
+                                ZStack {
+                                    KFImage(URL(string: fetchData.thumbnail)!)
+                                        .resizable()
+                                        .frame(width: 100, height: 100).cornerRadius(20)
+                                        .opacity(fetchData.dueDate ? 1 : 0.3)
+                                    Image("iconDonationCompleted")
+                                        .resizable()
+                                        .frame(width: 100, height: 100).cornerRadius(20)
+                                        .opacity(fetchData.myInfo.story ? 1 : 0)
+                                }
                                 VStack(alignment: .leading) {
                                     Text(fetchData.title)
                                         .font(.system(size: 20, weight: .bold))
