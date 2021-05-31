@@ -165,7 +165,7 @@ struct ContentView: View {
                                     ProgressView(value: (fetchData.progressRatio))
                                 }
                                 Button(action: {}){
-                                    Image("contribution")
+                                    Image("btnDonationMedN")
                                         .resizable()
                                         .frame(width: 60, height: 60)
                                 }
