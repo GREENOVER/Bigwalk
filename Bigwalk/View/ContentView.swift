@@ -19,7 +19,7 @@ struct ContentView: View {
                     Text("그룹형").tag(2)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
                 Text("내가 참여한 캠페인").frame(maxWidth: .infinity, alignment: .center)
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
                         Spacer(minLength: 5)
                         ForEach(0..<fetch.myData.count, id: \.self) { i in
@@ -36,7 +36,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
                         Spacer(minLength: 5)
                         
