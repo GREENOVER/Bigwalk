@@ -80,7 +80,10 @@
 - SwiftUI에서는 UI 요소를 배치하고 옵션을 줄때 UIKit과는 다르게 적용한 순서대로 옵션이 설정되어 고려하여 옵션을 적용하였다.
 ## **🤔 고민한 점**
 ### "좀 더 빠른 이미지 처리 및 캐싱"
-- 통신 후 이미지에 대
-- SwiftUI에서는 UI 요소를 배치하고 옵션을 줄때 UIKit과는 다르게 적용한 순서대로 옵션이 설정되어 고려하여 옵션을 적용하였다.ㅎ
-- SwiftUI에서는 UI 요소를 배치하고 옵션을 줄때 UIKit과는 다르게 적용한 순서대로 옵션이 설정되어 고려하여 옵션을 적용하였다. 
-- SwiftUI에서는 UI 요소를 배치하고 옵션을 줄때 UIKit과는 다르게 적용한 순서대로 옵션이 설정되어 고려하여 옵션을 적용하였다.
+- 통신 후 이미지에 대한 처리를 더 빠르게 해주기 위해 킹피셔 라이브러리를 통해 이미지 캐싱 및 처리를 구현하였다.
+  ```swift
+  KFImage(URL(string: fetchData.thumbnail)!)
+                                        .resizable()
+                                        .frame(width: 100, height: 100).cornerRadius(20)
+                                        .opacity(fetchData.dueDate ? 1 : 0.3)
+  ```
