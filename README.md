@@ -27,6 +27,21 @@
 - SPM과 CocoaPods으로 외부 라이브러리에 대해 관리하였다.
 
 ## 🌲 **UI 및 기능 동작**
+1. 공개형/기업형 전환에 따른 캠페인 노출
+![InApp_1](https://user-images.githubusercontent.com/72292617/120254180-34ca8c00-c2c4-11eb-9f56-d157cf0af475.gif)
+2. 내가 참여한 캠페인 노출 및 스크롤링
+![InApp_2](https://user-images.githubusercontent.com/72292617/120254217-4a3fb600-c2c4-11eb-9b74-7e8a20e14422.gif)
+3. 7개의 카테고리에 대한 노출 스크롤링 및 선택 효과 부여
+![InApp_3](https://user-images.githubusercontent.com/72292617/120254256-60e60d00-c2c4-11eb-8588-a0c3e8446365.gif)
+4. 캠페인 리스트 노출 및 스크롤링과 통신
+![InApp_4](https://user-images.githubusercontent.com/72292617/120254281-72c7b000-c2c4-11eb-9f2c-d03d093858ae.gif)
+5. 구글 로그인
+![GoogleLogin](https://user-images.githubusercontent.com/72292617/120254298-79eebe00-c2c4-11eb-8036-4312c826fed1.gif)
+6. 카카오톡 로그인_최초 접속시
+![KakaoLogin_1](https://user-images.githubusercontent.com/72292617/120254309-8115cc00-c2c4-11eb-9eaf-4a744cf8fa19.gif)
+7. 카카오톡 로그인_이후 접속시
+![KakaoLogin_2](https://user-images.githubusercontent.com/72292617/120254327-8e32bb00-c2c4-11eb-99df-b285786d95a9.gif)
+
 
 ## **👨‍🔧 트러블 슈팅**
 
