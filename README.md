@@ -156,8 +156,14 @@
     }
   }
   ```
-
-
-                                .background(Color.blue)ㅗ
-                                .background(Color.blue)ㅇ
-                                .background(Color.blue)
+### "정렬 및 필터링에 대한 고민"
+- 캠페인 데이터를 정렬해주기 위해 고차함수를 사용하여 사이드 이펙트 없도록 구현하였다.
+- 통신 후 디코딩을 통해 객체를 생성하는 과정에서 sorted로 참여율 순으로 정렬한다.
+- 또한 진행중 캠페인이 최상단에 위치하게끔 만료일의 여부를 가지고 두개의 배열을 생성한뒤 합쳐주었다.
+  ```swift
+  let sortData = listData.sorted{$0.ratio < $1.ratio}
+  let undisableData = sortData.filter{$0.dueDate == true}
+  let disableData = sortData.filter{$0.dueDate == false}
+  totalData = undisableData + disableData
+  ```
+                       
