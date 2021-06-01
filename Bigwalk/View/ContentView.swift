@@ -135,6 +135,15 @@ struct ContentView: View {
                     }
                 }
                 HStack(spacing: 20) {
+                    Button(action: GoogleLogin.attemptLoginGoogle,label: {
+                        Image("google")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                    })
+                    .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                    .background(Color.white)
+                    .cornerRadius(8.0)
+                    .shadow(radius: 4.0)
                     Button(action : {
                         if (UserApi.isKakaoTalkLoginAvailable()) {
                             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
@@ -162,15 +171,6 @@ struct ContentView: View {
                             _ = AuthController.handleOpenUrl(url: url)
                         }
                     })
-                    Button(action: GoogleLogin.attemptLoginGoogle,label: {
-                        Image("google")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                    })
-                    .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-                    .background(Color.white)
-                    .cornerRadius(8.0)
-                    .shadow(radius: 4.0)
                 }
             }
         }
