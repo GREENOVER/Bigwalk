@@ -166,4 +166,13 @@
   let disableData = sortData.filter{$0.dueDate == false}
   totalData = undisableData + disableData
   ```
+### "통신을 비동기적으로 처리하기"
+- 통신을 한 후 화면이 업데이트 되도록 하기 위해 @ObservedObject 어노테이션을 사용하여 통신 디코딩 데이터에 대한 객체를 생성하고 리스트로 화면 구성 시 고유 캠페인 별 id값을 사용하여 통신 후 화면이 다시 그려져 정상적으로 보이도록 구현하였다.
+- UIKit에서 구현한다면 prepareForReuse와 같은 기능을 SwiftUI에서는 옵저버 패턴을 통해 간단히 구현할 수 있었다.
+  ```swift
+  @ObservedObject var fetch = FetchCampaign()
+  ForEach(0..<fetch.totalData.count, id: \.self) { i in
+  ...
+  }
+  ```
                        
