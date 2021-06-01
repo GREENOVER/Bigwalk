@@ -50,7 +50,7 @@
 - 구분선을 없애주기 위해 HideRowSeparatorModifier라는 구조체 타입을 생성하여 그 안에서 구분선을 없애고 패딩과 엣지를 설정하여 적용하였다.
 - ```swift
   // MARK: 리스트 셀 구분선 숨김 구조체
-struct HideRowSeparatorModifier: ViewModifier {
+  struct HideRowSeparatorModifier: ViewModifier {
     static let defaultListRowHeight: CGFloat = 20
     var insets: EdgeInsets
     var background: Color
@@ -75,5 +75,5 @@ struct HideRowSeparatorModifier: ViewModifier {
   extension EdgeInsets {
       static let defaultListRowInsets = Self(top: 10, leading: 10, bottom: 10, trailing: 10)
   }
-```
+  ```
 ## **🤔 고민한 점**
