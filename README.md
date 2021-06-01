@@ -89,7 +89,7 @@
   ```
  ### "카테고리 영역 별 클릭 시 선택 효과가 부여되도록 구현하기"
  - 카테고리 버튼 생성 하여 액션을 주어 선택 시 효과를 부여할 수 있도록 해당 카테고리 별 클릭 변수를 두어 액션을 취해주도록 구현하였다.
-   ```swift
+  ```swift
    if category.title == clickCheck {
                                 Button(action: {
                                     self.clickCheck = category.title
@@ -114,3 +114,50 @@
                                 .font(Font.body.bold())
                             }
   ```
+### "SNS 로그인 설정에 대한 앱 딜리게이트 파일 생성 및 적용"
+- SwiftUI 앱 사이클로 프로젝트 진행 시 앱 딜리게이트 파일을 직접 생성하여 구현하여야되었다.
+- 앱 딜리게이트 파일을 생성하여 앱 설정을 구현하고 뷰 로드 시 사용되도록 구현하였다.
+  ```swift
+  class AppDelegate: NSObject, UIApplicationDelegate, GIDSignInDelegate{
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        KakaoSDKCommon.initSDK(appKey: "9d97f6c41c56b1564f7fad8eb23c59ab", loggingEnable:false)
+        
+        FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+            return AuthController.handleOpenUrl(url: url, options: options)
+        }
+        
+        return GIDSignIn.sharedInstance().handle(url)
+    }
+    
+    @available(iOS 9.0, *)
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error != nil {
+            return
+        }
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        
+        Auth.auth().signIn(with: credential){
+            (user, error) in
+            if error != nil {
+                return
+            }
+        }
+    }
+  }
+  ```
+
+
+                                .background(Color.blue)ㅗ
+                                .background(Color.blue)ㅇ
+                                .background(Color.blue)
