@@ -1,8 +1,19 @@
 ${PODS_ROOT}/Target Support Files/Pods-Bigwalk/Pods-Bigwalk-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire-framework/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/AppAuth-framework/AppAuth.framework
+${BUILT_PRODUCTS_DIR}/FirebaseAuth-framework/FirebaseAuth.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCore-framework/FirebaseCore.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics-framework/FirebaseCoreDiagnostics.framework
+${BUILT_PRODUCTS_DIR}/FirebaseInstallations-framework/FirebaseInstallations.framework
+${BUILT_PRODUCTS_DIR}/GTMAppAuth-framework/GTMAppAuth.framework
+${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-framework/GTMSessionFetcher.framework
+${BUILT_PRODUCTS_DIR}/GoogleDataTransport-framework/GoogleDataTransport.framework
+${BUILT_PRODUCTS_DIR}/GoogleUtilities-framework/GoogleUtilities.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKAuth-framework/KakaoSDKAuth.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKCommon-framework/KakaoSDKCommon.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKTalk-framework/KakaoSDKTalk.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKTemplate-framework/KakaoSDKTemplate.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKUser-framework/KakaoSDKUser.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher-framework/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/PromisesObjC-framework/FBLPromises.framework
+${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework

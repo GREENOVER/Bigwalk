@@ -176,21 +176,43 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-framework/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AppAuth-framework/AppAuth.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FirebaseAuth-framework/FirebaseAuth.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore-framework/FirebaseCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics-framework/FirebaseCoreDiagnostics.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FirebaseInstallations-framework/FirebaseInstallations.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GTMAppAuth-framework/GTMAppAuth.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-framework/GTMSessionFetcher.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GoogleDataTransport-framework/GoogleDataTransport.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities-framework/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaoSDKAuth-framework/KakaoSDKAuth.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaoSDKCommon-framework/KakaoSDKCommon.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaoSDKTalk-framework/KakaoSDKTalk.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaoSDKTemplate-framework/KakaoSDKTemplate.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaoSDKUser-framework/KakaoSDKUser.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher-framework/Kingfisher.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PromisesObjC-framework/FBLPromises.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-framework/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AppAuth-framework/AppAuth.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FirebaseAuth-framework/FirebaseAuth.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore-framework/FirebaseCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics-framework/FirebaseCoreDiagnostics.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/FirebaseInstallations-framework/FirebaseInstallations.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GTMAppAuth-framework/GTMAppAuth.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-framework/GTMSessionFetcher.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GoogleDataTransport-framework/GoogleDataTransport.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities-framework/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaoSDKAuth-framework/KakaoSDKAuth.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaoSDKCommon-framework/KakaoSDKCommon.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaoSDKTalk-framework/KakaoSDKTalk.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaoSDKTemplate-framework/KakaoSDKTemplate.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/KakaoSDKUser-framework/KakaoSDKUser.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher-framework/Kingfisher.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PromisesObjC-framework/FBLPromises.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/nanopb-framework/nanopb.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

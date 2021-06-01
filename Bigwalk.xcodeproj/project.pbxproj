@@ -10,6 +10,7 @@
 		89B70508B62DDDC50AC47C51 /* Pods_Bigwalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF29A327EAD32D563A05E1C9 /* Pods_Bigwalk.framework */; };
 		9A16CD9C2661139E00C62760 /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A16CD9B2661139E00C62760 /* Campaign.swift */; };
 		9A74006826651A1E0076CE6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A74006426651A010076CE6F /* AppDelegate.swift */; };
+		9A9E3BE12665B10A00C4D0EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A9E3BE02665B10A00C4D0EF /* GoogleService-Info.plist */; };
 		9AB0231926630C7900020702 /* FetchCampaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0231826630C7900020702 /* FetchCampaign.swift */; };
 		9AB0231C26630F7D00020702 /* MockDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0231B26630F7D00020702 /* MockDataList.swift */; };
 		9AC79B2C2664AF5400E6AB44 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC79B2B2664AF5400E6AB44 /* Category.swift */; };
@@ -40,6 +41,7 @@
 		8A56733D31A9515C1250DB19 /* Pods-BigwalkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigwalkTests.release.xcconfig"; path = "Target Support Files/Pods-BigwalkTests/Pods-BigwalkTests.release.xcconfig"; sourceTree = "<group>"; };
 		9A16CD9B2661139E00C62760 /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaign.swift; sourceTree = "<group>"; };
 		9A74006426651A010076CE6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9A9E3BE02665B10A00C4D0EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9AB0231826630C7900020702 /* FetchCampaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCampaign.swift; sourceTree = "<group>"; };
 		9AB0231B26630F7D00020702 /* MockDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataList.swift; sourceTree = "<group>"; };
 		9AC79B2B2664AF5400E6AB44 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		9AF581B826605CFD000C40FC /* Bigwalk */ = {
 			isa = PBXGroup;
 			children = (
+				9A9E3BE02665B10A00C4D0EF /* GoogleService-Info.plist */,
 				9AB023202663104F00020702 /* Model */,
 				9AB02325266311ED00020702 /* View */,
 				9AF581BF26605CFD000C40FC /* Preview Content */,
@@ -228,14 +231,13 @@
 				9AF581B326605CFD000C40FC /* Frameworks */,
 				9AF581B426605CFD000C40FC /* Resources */,
 				20E9EA47C860974E8706E5AA /* [CP] Embed Pods Frameworks */,
+				10F0ADC7F25197D327C5A01E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Bigwalk;
-			packageProductDependencies = (
-			);
 			productName = Bigwalk;
 			productReference = 9AF581B626605CFD000C40FC /* Bigwalk.app */;
 			productType = "com.apple.product-type.application";
@@ -294,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AF581C126605CFD000C40FC /* Preview Assets.xcassets in Resources */,
+				9A9E3BE12665B10A00C4D0EF /* GoogleService-Info.plist in Resources */,
 				9AE0B85026612271000A8F2C /* CampaignMock.json in Resources */,
 				9AF581BE26605CFD000C40FC /* Assets.xcassets in Resources */,
 			);
@@ -302,6 +305,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		10F0ADC7F25197D327C5A01E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bigwalk/Pods-Bigwalk-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bigwalk/Pods-Bigwalk-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bigwalk/Pods-Bigwalk-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		20E9EA47C860974E8706E5AA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

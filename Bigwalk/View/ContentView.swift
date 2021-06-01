@@ -2,6 +2,7 @@ import SwiftUI
 import Kingfisher
 import KakaoSDKAuth
 import KakaoSDKUser
+import GoogleSignIn
 
 struct ContentView: View {
     @State var clickPicker = 1
@@ -18,7 +19,9 @@ struct ContentView: View {
                     Text("공개형").tag(1)
                     Text("그룹형").tag(2)
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
-                Text("내가 참여한 캠페인").frame(maxWidth: .infinity, alignment: .center)
+                Text("내가 참여한 캠페인")
+                    .font(Font.body.bold())
+                    .frame(maxWidth: .infinity, alignment: .center)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
                         Spacer(minLength: 5)
@@ -131,33 +134,51 @@ struct ContentView: View {
                         }
                     }
                 }
-                Button(action : {
-                    if (UserApi.isKakaoTalkLoginAvailable()) {
-                        UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                            print(oauthToken?.accessToken as Any)
-                            print(error as Any)
+                HStack(spacing: 20) {
+                    Button(action : {
+                        if (UserApi.isKakaoTalkLoginAvailable()) {
+                            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                                print(oauthToken?.accessToken as Any)
+                                print(error as Any)
+                            }
+                        }else{
+                            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                                print(oauthToken?.accessToken as Any)
+                                print(error as Any)
+                            }
                         }
-                    }else{
-                        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-                            print(oauthToken?.accessToken as Any)
-                            print(error as Any)
-                        }
+                    }){
+                        Image("kakao")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        
                     }
-                }){
-                    Text("카카오 계정으로 로그인")
-                        .foregroundColor(.yellow)
-                        .font(Font.body.bold())
+                    .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                    .background(Color.yellow)
+                    .cornerRadius(8.0)
+                    .shadow(radius: 4.0)
+                    .onOpenURL(perform: { url in
+                        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                            _ = AuthController.handleOpenUrl(url: url)
+                        }
+                    })
+                    Button(action: GoogleLogin.attemptLoginGoogle,label: {
+                        Image("google")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                    })
+                    .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                    .background(Color.white)
+                    .cornerRadius(8.0)
+                    .shadow(radius: 4.0)
                 }
-                .onOpenURL(perform: { url in
-                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
-                        _ = AuthController.handleOpenUrl(url: url)
-                    }
-                })
             }
         }
     }
 }
 
+
+// MARK: 미리보기뷰
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -171,5 +192,22 @@ struct ContentView_Previews: PreviewProvider {
 extension View {
     func hideRowSeparator(insets: EdgeInsets = .defaultListRowInsets, background: Color = .white) -> some View {
         modifier(HideRowSeparatorModifier(insets: insets, background: background))
+    }
+}
+
+
+// MARK: 구글 로그인
+struct GoogleLogin: UIViewRepresentable {
+    
+    func makeUIView(context: UIViewRepresentableContext<GoogleLogin>) -> UIView {
+        return UIView()
+    }
+    
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<GoogleLogin>) {
+    }
+    
+    static func attemptLoginGoogle(){
+        GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
+        GIDSignIn.sharedInstance()?.signIn()
     }
 }

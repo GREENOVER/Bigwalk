@@ -7,6 +7,9 @@ pod 'KakaoSDKUser'
 pod 'KakaoSDKTalk'
 pod 'Alamofire'
 pod 'Kingfisher'
+pod 'Firebase/Auth'
+pod 'Firebase/Core'
+pod 'GoogleSignIn'
 
 target 'Bigwalk' do
   # Comment the next line if you don't want to use dynamic frameworks
