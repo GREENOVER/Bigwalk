@@ -76,4 +76,6 @@
       static let defaultListRowInsets = Self(top: 10, leading: 10, bottom: 10, trailing: 10)
   }
   ```
+### "SwiftUI 요소 배치 시 순차적용 되는 문제"
+- SwiftUI에서는 UI 요소를 배치하고 옵션을 줄때 UIKit과는 다르게 적용한 순서대로 옵션이 설정되어 고려하여 옵션을 적용하였다.
 ## **🤔 고민한 점**
