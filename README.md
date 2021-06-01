@@ -87,3 +87,30 @@
                                         .frame(width: 100, height: 100).cornerRadius(20)
                                         .opacity(fetchData.dueDate ? 1 : 0.3)
   ```
+ ### "카테고리 영역 별 클릭 시 선택 효과가 부여되도록 구현하기"
+ - 카테고리 버튼 생성 하여 액션을 주어 선택 시 효과를 부여할 수 있도록 해당 카테고리 별 클릭 변수를 두어 액션을 취해주도록 구현하였다.
+   ```swift
+   if category.title == clickCheck {
+                                Button(action: {
+                                    self.clickCheck = category.title
+                                }) {
+                                    Text("\(category.title)")
+                                }.frame(width: buttonWidth, height: buttonHeight)
+                                .padding(.all)
+                                .background(Color.blue)
+                                .cornerRadius(buttonHeight * 2)
+                                .foregroundColor(.white)
+                                .font(Font.body.bold())
+                            } else {
+                                Button(action: {
+                                    self.clickCheck = category.title
+                                }) {
+                                    Text("\(category.title)")
+                                }.frame(width: buttonWidth, height: buttonHeight)
+                                .padding(.all)
+                                .background(Color.white)
+                                .cornerRadius(buttonHeight * 2)
+                                .foregroundColor(.gray)
+                                .font(Font.body.bold())
+                            }
+  ```
