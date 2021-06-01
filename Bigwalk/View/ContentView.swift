@@ -195,7 +195,6 @@ extension View {
     }
 }
 
-
 // MARK: 구글 로그인
 struct GoogleLogin: UIViewRepresentable {
     
