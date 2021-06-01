@@ -121,7 +121,6 @@
 		9AB02325266311ED00020702 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9A74006426651A010076CE6F /* AppDelegate.swift */,
 				9AF581B926605CFD000C40FC /* BigwalkApp.swift */,
 				9AF581BB26605CFD000C40FC /* ContentView.swift */,
 				9ACABEAD2663213E002A1F2D /* HideRowSeparatorModifier.swift */,
@@ -132,7 +131,9 @@
 		9AC3B23F266062B3002AC34F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9A74006426651A010076CE6F /* AppDelegate.swift */,
 				9AF581BD26605CFD000C40FC /* Assets.xcassets */,
+				9A9E3BE02665B10A00C4D0EF /* GoogleService-Info.plist */,
 				9AF581C226605CFD000C40FC /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -170,7 +171,6 @@
 		9AF581B826605CFD000C40FC /* Bigwalk */ = {
 			isa = PBXGroup;
 			children = (
-				9A9E3BE02665B10A00C4D0EF /* GoogleService-Info.plist */,
 				9AB023202663104F00020702 /* Model */,
 				9AB02325266311ED00020702 /* View */,
 				9AF581BF26605CFD000C40FC /* Preview Content */,
