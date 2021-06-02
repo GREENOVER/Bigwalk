@@ -1,6 +1,6 @@
 import Foundation
 
-enum Category: String, CaseIterable {
+enum Category: CaseIterable {
     case total
     case animal
     case young
