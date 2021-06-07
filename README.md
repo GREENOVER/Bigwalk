@@ -43,6 +43,8 @@
 ![KakaoLogin_1](https://user-images.githubusercontent.com/72292617/120254309-8115cc00-c2c4-11eb-9eaf-4a744cf8fa19.gif)
 7. 카카오톡 로그인_이후 접속시   
 ![KakaoLogin_2](https://user-images.githubusercontent.com/72292617/120254327-8e32bb00-c2c4-11eb-99df-b285786d95a9.gif)
+8. 데이터 통신 시 인디케이터 노출
+![indicator](https://user-images.githubusercontent.com/72292617/120956131-dd2d9400-c78d-11eb-80db-77c91f1bcfce.gif)
 
 
 ## **👨‍🔧 트러블 슈팅**
@@ -174,6 +176,29 @@
   @ObservedObject var fetch = FetchCampaign()
   ForEach(0..<fetch.totalData.count, id: \.self) { i in
   ...
+  }
+  ```
+### "데이터 통신 시 로딩중임을 사용자에게 알려주기"
+- 데이터 통신 과정에서 빈 화면이 아닌 로딩중이라는 통신에 대한 인디케이터 애니메이션을 구현하였다.
+- fetch 데이터가 비어있는 조건문을 가정하여 비어있으면 인디케이터 노출, 통신 완료 시 인디케이터 애니메이션 동작이 멈추고 데이터가 노출되도로 구현하였다.
+- UIKit의 ActivityIndicator를 사용하기 위해 UIViewRepresentable 프로토콜을 채택하여 인디케이터 구조체를 만들고 사용하였다.
+  ```swift
+  struct ActivityIndicator: UIViewRepresentable {
+    @Binding var isAnimating: Bool
+    let style: UIActivityIndicatorView.Style
+
+    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
+        return UIActivityIndicatorView(style: style)
+    }
+
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
+        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
+    }
+  }
+  ```
+  ```swift
+  if fetch.totalData.isEmpty {
+      ProgressView().frame(width: geometry.size.width, height: geometry.size.height * 0.7, alignment: .center)
   }
   ```
                        
