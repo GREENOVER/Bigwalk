@@ -43,7 +43,7 @@
 ![KakaoLogin_1](https://user-images.githubusercontent.com/72292617/120254309-8115cc00-c2c4-11eb-9eaf-4a744cf8fa19.gif)
 7. 카카오톡 로그인_이후 접속시   
 ![KakaoLogin_2](https://user-images.githubusercontent.com/72292617/120254327-8e32bb00-c2c4-11eb-99df-b285786d95a9.gif)
-8. 데이터 통신 시 인디케이터 노출
+8. 데이터 통신 시 인디케이터 노출   
 ![indicator](https://user-images.githubusercontent.com/72292617/120956131-dd2d9400-c78d-11eb-80db-77c91f1bcfce.gif)
 
 
