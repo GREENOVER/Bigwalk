@@ -76,6 +76,10 @@ struct ContentView: View {
                     }
                 }
                 
+                if fetch.totalData.isEmpty {
+                    ProgressView().frame(width: geometry.size.width, height: geometry.size.height * 0.7, alignment: .center)
+                }
+                
                 List {
                     ForEach(0..<fetch.totalData.count, id: \.self) { i in
                         if clickPicker == fetch.totalData[i].organization {
