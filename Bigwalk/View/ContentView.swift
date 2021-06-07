@@ -23,6 +23,9 @@ struct ContentView: View {
                     .font(Font.body.bold())
                     .frame(maxWidth: .infinity, alignment: .center)
                 ScrollView(.horizontal, showsIndicators: false) {
+                    if fetch.myData.isEmpty {
+                        ProgressView().frame(width: UIScreen.main.bounds.width, alignment: .center)
+                    }
                     HStack(spacing: 10) {
                         Spacer(minLength: 5)
                         ForEach(0..<fetch.myData.count, id: \.self) { i in
@@ -177,7 +180,6 @@ struct ContentView: View {
     }
 }
 
-
 // MARK: 미리보기뷰
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -208,5 +210,19 @@ struct GoogleLogin: UIViewRepresentable {
     static func attemptLoginGoogle(){
         GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
         GIDSignIn.sharedInstance()?.signIn()
+    }
+}
+
+// MARK: 데이터 통신 인디케이터
+struct ActivityIndicator: UIViewRepresentable {
+    @Binding var isAnimating: Bool
+    let style: UIActivityIndicatorView.Style
+
+    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
+        return UIActivityIndicatorView(style: style)
+    }
+
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
+        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
     }
 }
